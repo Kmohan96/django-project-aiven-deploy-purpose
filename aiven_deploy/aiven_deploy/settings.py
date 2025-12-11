@@ -14,8 +14,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 
-load_dotenv() #this will loads all the variables from env to here  
-
+load_dotenv() #this will loads all the variables from env to here
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY=os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -89,14 +89,11 @@ DATABASES = {
         'PORT':os.getenv("DB_PORT"),
         "OPTIONS":{
             "ssl":{
-                "ca":os.path.join(BASE_DIR,"aiven_ca.pem"),
+                "ca": os.getenv("PEM_CONT"),
             },
             'charset':'utf8mb4',
-            'init_command':"SET sql_mode='STRICT_TRANS_TABLES'",
-        
-        }
-
-
+            'init_command':"SET sql_mode='STRICT_TRANS_TABLES'"
+            }
     }
 }
 
